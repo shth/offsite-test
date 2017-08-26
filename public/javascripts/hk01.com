@@ -1,0 +1,1 @@
+PARSELY.pInit({"apikey":"hk01.com","settings":{"debug":false,"widget":false,"tracker":true},"customizations":null,"track_ip_addresses":true,"bundle":"/code/ptrack-v0.7.0-engaged-time.js","track_third_party_cookies":true,"uuid":"427a97ce-1d81-40ea-8c22-eaf56c496bbf","network_uuid":"49af60ce-32b8-4f1d-b696-df82a2c30681","apikey_uuid":"427a97ce-1d81-40ea-8c22-eaf56c496bbf"});

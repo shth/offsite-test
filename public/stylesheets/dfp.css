@@ -1,0 +1,89 @@
+.popup_background{
+    width: 100%;
+    height: 100%;
+}
+
+.popup_wrapper{
+    width: 100%;
+    height: 100%;
+}
+
+.popup_content{
+    width: 100%;
+    height: 100%;
+}
+
+.popup_close{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 20px;
+    margin: 0;
+    opacity: 0.8;
+    background: white;
+	line-height: 52px;
+}
+
+.popup_close > span{
+    line-height: 32px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.ol-ads {
+    position: fixed;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+}
+.ol-ads > div {
+    width: 100%;
+    height: 100%;
+}
+.ol-ads > div > iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* Overlay With Banner */
+.bn_ads {
+    width: 100%; height: 60px;z-index: 999; display: none;
+    background-position-x: 50%; background-position-y: 50%; background-size: 100% 100%; background-repeat: no-repeat; opacity: 1;
+}
+
+.bn_ads.sticky_0 {
+    position: fixed; bottom: 0px; left: 0;
+}
+
+.bn_ads.sticky_50 {
+    position: fixed; bottom: 50px; left: 0;
+}
+
+.bn_ads > div {
+    width: 24px;
+    height: 24px;
+    padding: 0px;
+    position: absolute;
+    right: 0;
+    opacity: 0.6;
+    border-radius: 12px;
+    background-color: black;
+    margin-top: -12px;
+}
+
+.bn_ads > div > div {
+    line-height: 16px;
+    font-size: 16px;
+    font-weight: 900;
+    text-align: center;
+    margin: 2px;
+    border: 2px solid white;
+    color: white;
+    border-radius: 10px;
+}
