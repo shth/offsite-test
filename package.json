@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "cd ./React; webpack-dev-server -d --progress --colors --content-base build",
-    "build": "cd ./React; webpack --config webpack.config.js"
+    "build": "cd ./React; webpack --config webpack.config.js",
+    "watch": "cd ./React; webpack --config webpack.config.js -w"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
