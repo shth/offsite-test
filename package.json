@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "cd ./React; webpack-dev-server -d --progress --colors --content-base build",
+    "build": "cd ./React; webpack --config webpack.config.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
