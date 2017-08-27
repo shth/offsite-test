@@ -5,7 +5,10 @@ import ViewList from './ViewList';
 class ViewListContainer extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            fetching: false
+            , fetched: false
+        };
         this.fetchViews();
     }
 
@@ -28,20 +31,35 @@ class ViewListContainer extends React.Component {
     }
 
     fetchViews() {
+        this.setState({fetching: true});
         this.mockAPI()
             .then(response => {
                 const {status, viewCover, views} = response;
+                this.setState({
+                    status,
+                    viewCover,
+                    views,
+                    fetching: false,
+                    fetched: true
+                });
                 this.setState(response);
             })
     }
 
     render() {
+        const {viewCover, fetching, fetched} = this.state;
         return (
             <div>
-                <div>Im view list container</div>
-                <div>status: {this.state.status}</div>
-                <ViewCover/>
-                <ViewList/>
+                {
+                    fetched && !fetching
+                        ? <div>
+                        <div>Im view list container</div>
+                        <div>status: {this.state.status}</div>
+                        <ViewCover viewCover={viewCover}/>
+                        <ViewList/>
+                    </div>
+                        : <div>Fetching...</div>
+                }
             </div>
         )
     }
