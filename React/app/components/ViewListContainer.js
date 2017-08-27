@@ -1,6 +1,6 @@
 import React from 'react';
 import ViewCover from './ViewCover';
-import ViewList from './ViewList';
+import ViewEntry from './ViewEntry';
 
 class ViewListContainer extends React.Component {
     constructor() {
@@ -47,7 +47,7 @@ class ViewListContainer extends React.Component {
     }
 
     render() {
-        const {viewCover, fetching, fetched} = this.state;
+        const {viewCover, views, fetching, fetched} = this.state;
         return (
             <div>
                 {
@@ -56,7 +56,9 @@ class ViewListContainer extends React.Component {
                         <div>Im view list container</div>
                         <div>status: {this.state.status}</div>
                         <ViewCover viewCover={viewCover}/>
-                        <ViewList/>
+                        <section className="blog_listing large_img">
+                            {views.map(view => <ViewEntry viewEntry={view}/>)}
+                        </section>
                     </div>
                         : <div>Fetching...</div>
                 }
