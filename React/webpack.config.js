@@ -57,6 +57,6 @@ module.exports = {
         inline: true,
         port: 8008,
     },
-    // devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-eval-source-map',
     // plugins: [HTMLWebpackPluginConfig],
 };
