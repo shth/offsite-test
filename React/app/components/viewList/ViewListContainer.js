@@ -1,7 +1,7 @@
 import React from 'react';
 import ViewCover from './ViewCover';
 import ViewEntry from './ViewEntry';
-import InfiniteScroll from './common/InfiniteScroll';
+import InfiniteScroll from '../common/InfiniteScroll';
 
 class ViewListContainer extends React.Component {
     constructor() {
