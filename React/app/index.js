@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ViewCover from './components/ViewCover'
-import ViewList from './components/ViewList'
+import ViewListContainer from './components/ViewListContainer'
 
-ReactDOM.render(<ViewCover />, document.getElementById('react_view_cover'));
-ReactDOM.render(<ViewList />, document.getElementById('react_view_list'));
+ReactDOM.render(<ViewListContainer />, document.getElementById('react_list_view_container'));
