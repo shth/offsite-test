@@ -18,6 +18,8 @@ class ViewListContainer extends React.Component {
                 resolve();
             }, 1000)
         })).then(() => {
+            /* TODO: add editor pick field randomly */
+            /* TODO: add initial sort to place editor picked view at top */
             const status = (Math.floor(Math.random() * 2));
             const [viewCover, ...views] = viewList;
 
