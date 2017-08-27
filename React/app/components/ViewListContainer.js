@@ -1,6 +1,7 @@
 import React from 'react';
 import ViewCover from './ViewCover';
 import ViewEntry from './ViewEntry';
+import InfiniteScroll from './common/InfiniteScroll';
 
 class ViewListContainer extends React.Component {
     constructor() {
@@ -10,6 +11,7 @@ class ViewListContainer extends React.Component {
             , fetched: false
         };
         this.fetchViews();
+        this.fetchMore = this.fetchMore.bind(this);
     }
 
     mockAPI() {
@@ -30,6 +32,28 @@ class ViewListContainer extends React.Component {
             }
         })
 
+    }
+
+    mockLoadMore() {
+        return (new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve();
+            }, 1000)
+        })).then(() => {
+            return {
+                viewList,
+            }
+        })
+    }
+
+    fetchMore() {
+        this;
+        return this.mockLoadMore()
+            .then(response=>{
+                this.setState({
+                    views: this.state.views.concat(response.viewList)
+                })
+            });
     }
 
     fetchViews() {
@@ -59,7 +83,9 @@ class ViewListContainer extends React.Component {
                         <div>status: {this.state.status}</div>
                         <ViewCover viewCover={viewCover}/>
                         <section className="blog_listing large_img">
-                            {views.map(view => <ViewEntry viewEntry={view}/>)}
+                            <InfiniteScroll loadMoreFunction={this.fetchMore}>
+                                {views.map(view => <ViewEntry key={`view.targetLink${Math.random()}`} viewEntry={view}/>)}
+                            </InfiniteScroll>
                         </section>
                     </div>
                         : <div>Fetching...</div>
