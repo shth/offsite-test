@@ -2,6 +2,9 @@ import React from 'react'
 import Form from 'muicss/lib/react/form'
 import Input from 'muicss/lib/react/input'
 import Button from 'muicss/lib/react/button'
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {registerUser} from '../../../actions/SessionActions';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -22,7 +25,10 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         /* TODO: implement submit function */
-        alert(JSON.stringify(this.state))
+        this.props.registerUser(this.state)
+            .then(() => {
+                this.props.close();
+            });
     }
 
     render() {
@@ -32,14 +38,24 @@ class SignupForm extends React.Component {
                 <div>Sign up</div>
                 <Form>
                     <Input hint="Email" value={email} name="email" onChange={this.handleChange}/>
-                    <Input hint="Password" type="password" value={password} name="password" onChange={this.handleChange}/>
+                    <Input hint="Password" type="password" value={password} name="password"
+                           onChange={this.handleChange}/>
                     <Input hint="Confirm Password" type="password" value={confirmPassword} name="confirmPassword"
                            onChange={this.handleChange}/>
                     <Button onClick={this.handleSubmit}>Submit</Button>
-                    <Button onClick={(e)=> {e.preventDefault();this.props.close()}}>Close</Button>
+                    <Button onClick={(e) => {
+                        e.preventDefault();
+                        this.props.close()
+                    }}>Close</Button>
                 </Form>
             </div>
         )
     }
 }
-export default SignupForm
+
+// function mapActionsToProps(dispatch){
+//     return {
+//         actions: bindActionCreators(sessionActions,dispatch)
+//     }
+// }
+export default connect(null, {registerUser})(SignupForm)

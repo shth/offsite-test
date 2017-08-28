@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactModal from 'react-modal'
+import {createStore, applyMiddleware} from 'redux'
+import {Provider} from 'react-redux'
+import thunk from 'redux-thunk'
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 
@@ -62,57 +65,63 @@ class LoginBar extends React.Component {
             }
         }
         return (
-            <div className="menu__top">
-                <div className="wrapper">
-                    <div className="container">
-                        <a id="popup_datetime">
-                            <div className="weather" style={{cursor: 'default'}}>
-                                <span className="date">2017.1.29&nbsp;&nbsp;10:00</span>
-                                <span className="week">&nbsp;星期日&nbsp;&nbsp;</span>
-                                <span className="temp">&nbsp;19°C</span>
-                            </div>
-                        </a>
-                        <div className="container float_right">
-                            <a id="popup_search">
-                                <div className="search"><span></span></div>
-                            </a>
-                            <a id="popup_member" onClick={this.toggleMenu}>
-                                <div className="member_btn">
-                                    <span></span>會員登入
+            <Provider store={store}>
+                <div className="menu__top">
+                    <div className="wrapper">
+                        <div className="container">
+                            <a id="popup_datetime">
+                                <div className="weather" style={{cursor: 'default'}}>
+                                    <span className="date">2017.1.29&nbsp;&nbsp;10:00</span>
+                                    <span className="week">&nbsp;星期日&nbsp;&nbsp;</span>
+                                    <span className="temp">&nbsp;19°C</span>
                                 </div>
                             </a>
+                            <div className="container float_right">
+                                <a id="popup_search">
+                                    <div className="search"><span></span></div>
+                                </a>
+                                <a id="popup_member" onClick={this.toggleMenu}>
+                                    <div className="member_btn">
+                                        <span></span>會員登入
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <ReactModal isOpen={this.state.openSignupModal} onRequestClose={this.closeSignupModal}
-                                style={style.modal}>
-                        <SignupForm close={this.closeSignupModal}/>
-                    </ReactModal>
-                    <ReactModal isOpen={this.state.openLoginModal} onRequestClose={this.closeLoginModal}
-                                style={style.modal}>
-                        <LoginForm close={this.closeLoginModal}/>
-                    </ReactModal>
-                    <div className="menu__top__member menu__top_popup" style={style.menuPopup}>
-                        <div className="menu__top__member_beforelogin">
-                            <ul>
-                                <li><a className="btn alreadymember" href="#!" onClick={this.openLoginModal}>登入</a>
-                                </li>
-                                <li><a className="btn notyetmember" href="#!" onClick={this.openSignupModal}>註冊成為會員</a>
-                                </li>
-                            </ul>
+                        <ReactModal isOpen={this.state.openSignupModal} onRequestClose={this.closeSignupModal}
+                                    style={style.modal}>
+                            <SignupForm close={this.closeSignupModal}/>
+                        </ReactModal>
+                        <ReactModal isOpen={this.state.openLoginModal} onRequestClose={this.closeLoginModal}
+                                    style={style.modal}>
+                            <LoginForm close={this.closeLoginModal}/>
+                        </ReactModal>
+                        <div className="menu__top__member menu__top_popup" style={style.menuPopup}>
+                            <div className="menu__top__member_beforelogin">
+                                <ul>
+                                    <li><a className="btn alreadymember" href="#!" onClick={this.openLoginModal}>登入</a>
+                                    </li>
+                                    <li><a className="btn notyetmember" href="#!"
+                                           onClick={this.openSignupModal}>註冊成為會員</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+
+
+                        <div className="menu__top__search menu__top_popup" data-search-form="" style={{right: '53px'}}>
+                            <input type="search" name="keyword" placeholder="搜尋"/>
+                            <div className="btn">搜尋</div>
+                        </div>
+
                     </div>
-
-
-                    <div className="menu__top__search menu__top_popup" data-search-form="" style={{right: '53px'}}>
-                        <input type="search" name="keyword" placeholder="搜尋"/>
-                        <div className="btn">搜尋</div>
-                    </div>
-
                 </div>
-            </div>
-
+            </Provider>
         )
     }
 }
+const store = createStore(
+    (state={}) => state,
+    applyMiddleware(thunk)
+);
 
 export default LoginBar
