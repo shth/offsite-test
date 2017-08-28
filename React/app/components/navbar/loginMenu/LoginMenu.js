@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactModal from 'react-modal'
-import {createStore, applyMiddleware} from 'redux'
-import {Provider} from 'react-redux'
+import {createStore, applyMiddleware, compose} from 'redux'
+import {Provider, connect} from 'react-redux'
 import thunk from 'redux-thunk'
+import reducers from '../../../reducers/index';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 
@@ -98,7 +99,8 @@ class LoginBar extends React.Component {
                         <div className="menu__top__member menu__top_popup" style={style.menuPopup}>
                             <div className="menu__top__member_beforelogin">
                                 <ul>
-                                    <li><a className="btn alreadymember" href="#!" onClick={this.openLoginModal}>登入</a>
+                                    <li><a className="btn alreadymember" href="#!"
+                                           onClick={this.openLoginModal}>登入</a>
                                     </li>
                                     <li><a className="btn notyetmember" href="#!"
                                            onClick={this.openSignupModal}>註冊成為會員</a>
@@ -120,8 +122,17 @@ class LoginBar extends React.Component {
     }
 }
 const store = createStore(
-    (state={}) => state,
-    applyMiddleware(thunk)
+    reducers,
+    {},
+    compose(applyMiddleware(thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 );
-
+//
+// function mapStateToProps(state) {
+//     return {
+//         user: state.user,
+//         authenticated: state.authenticated
+//     }
+// }
+// export default connect(mapStateToProps)(LoginBar)
 export default LoginBar

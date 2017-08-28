@@ -36,6 +36,7 @@ class SignupForm extends React.Component {
         return (
             <div>
                 <div>Sign up</div>
+                { this.props.authenticated && <div>you are already logged in</div>}
                 <Form>
                     <Input hint="Email" value={email} name="email" onChange={this.handleChange}/>
                     <Input hint="Password" type="password" value={password} name="password"
@@ -53,9 +54,16 @@ class SignupForm extends React.Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        user: state.auth.user,
+        authenticated: state.auth.authenticated
+    }
+}
+
 // function mapActionsToProps(dispatch){
 //     return {
 //         actions: bindActionCreators(sessionActions,dispatch)
 //     }
 // }
-export default connect(null, {registerUser})(SignupForm)
+export default connect(mapStateToProps, {registerUser})(SignupForm)
