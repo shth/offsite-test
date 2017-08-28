@@ -1,7 +1,6 @@
 import React from 'react';
-// import {CustomModal} from '../../common/CustomModal';
 import ReactModal from 'react-modal'
-import SignupModal from './SignupModal';
+import SignupForm from './SignupForm';
 // import LoginModal from './LoginModal';
 
 class LoginBar extends React.Component {
@@ -50,7 +49,8 @@ class LoginBar extends React.Component {
                     backgroundColor: 'rgba(0, 0, 0, 0.5)'
                 },
                 content: {
-                    top: '20%',
+                    width: 400,
+                    top: '50%',
                     left: '50%',
                     right: 'auto',
                     bottom: 'auto',
@@ -84,8 +84,7 @@ class LoginBar extends React.Component {
                     {/*<LoginModal show={this.state.openLoginModal} onHide={this.closeLoginModal}/>*/}
                     <ReactModal isOpen={this.state.openSignupModal} onRequestClose={this.closeSignupModal}
                                 style={style.modal}>
-                        <div>Sign up</div>
-                        <button onClick={this.closeSignupModal}>Close</button>
+                        <SignupForm close={this.closeSignupModal}/>
                     </ReactModal>
                     <div className="menu__top__member menu__top_popup" style={style.menuPopup}>
                         <div className="menu__top__member_beforelogin">
