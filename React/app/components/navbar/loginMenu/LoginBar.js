@@ -66,7 +66,6 @@ class LoginBar extends React.Component {
             }
         }
         return (
-            <Provider store={store}>
                 <div className="menu__top">
                     <div className="wrapper">
                         <div className="container">
@@ -83,7 +82,7 @@ class LoginBar extends React.Component {
                                 </a>
                                 <a id="popup_member" onClick={this.toggleMenu}>
                                     <div className="member_btn">
-                                        <span></span>會員登入
+                                        <span></span>{this.props.authenticated ? '你好' : '會員登入'}
                                     </div>
                                 </a>
                             </div>
@@ -117,22 +116,13 @@ class LoginBar extends React.Component {
 
                     </div>
                 </div>
-            </Provider>
         )
     }
 }
-const store = createStore(
-    reducers,
-    {},
-    compose(applyMiddleware(thunk),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-);
-//
-// function mapStateToProps(state) {
-//     return {
-//         user: state.user,
-//         authenticated: state.authenticated
-//     }
-// }
-// export default connect(mapStateToProps)(LoginBar)
-export default LoginBar
+function mapStateToProps(state) {
+    return {
+        user: state.auth.user,
+        authenticated: state.auth.authenticated
+    }
+}
+export default connect(mapStateToProps, {})(LoginBar)
