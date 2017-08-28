@@ -1,12 +1,20 @@
 import React from 'react';
+// import {CustomModal} from '../../common/CustomModal';
+import ReactModal from 'react-modal'
+import SignupModal from './SignupModal';
+// import LoginModal from './LoginModal';
 
 class LoginBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            openSubmenu: false
+            openSubmenu: false,
+            openLoginModal: false,
+            openSignupModal: false,
         }
         this.toggleMenu = this.toggleMenu.bind(this)
+        this.openSignupModal = this.openSignupModal.bind(this)
+        this.closeSignupModal = this.closeSignupModal.bind(this)
     }
 
     toggleMenu() {
@@ -14,11 +22,41 @@ class LoginBar extends React.Component {
         this.setState({openSubmenu: !openSubmenu})
     }
 
+    openLoginModal() {
+        this.setState({openLoginModal: true});
+    }
+
+    openSignupModal() {
+        this.setState({openSignupModal: true});
+    }
+
+    closeLoginModal() {
+        this.setState({openLoginModal: false});
+    }
+
+    closeSignupModal() {
+        this.setState({openSignupModal: false});
+    }
+
     render() {
         const {openSubmenu} = this.state;
         const style = {
             menuPopup: {
                 display: openSubmenu ? 'block' : 'none'
+            },
+            modal: {
+                overlay: {
+                    zIndex: 1045,
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                },
+                content: {
+                    top: '20%',
+                    left: '50%',
+                    right: 'auto',
+                    bottom: 'auto',
+                    marginRight: '-50%',
+                    transform: 'translate(-50%, -50%)'
+                }
             }
         }
         return (
@@ -43,12 +81,18 @@ class LoginBar extends React.Component {
                             </a>
                         </div>
                     </div>
+                    {/*<LoginModal show={this.state.openLoginModal} onHide={this.closeLoginModal}/>*/}
+                    <ReactModal isOpen={this.state.openSignupModal} onRequestClose={this.closeSignupModal}
+                                style={style.modal}>
+                        <div>Sign up</div>
+                        <button onClick={this.closeSignupModal}>Close</button>
+                    </ReactModal>
                     <div className="menu__top__member menu__top_popup" style={style.menuPopup}>
                         <div className="menu__top__member_beforelogin">
                             <ul>
-                                <li><a className="btn alreadymember" href="https://www.hk01.com/member/login">登入</a>
-                                </li>
-                                <li><a className="btn notyetmember" href="https://www.hk01.com/member/registration">註冊成為會員</a>
+                                {/*<li><a className="btn alreadymember" href="" onClick={this.openLoginModal}>登入</a>*/}
+                                {/*</li>*/}
+                                <li><a className="btn notyetmember" onClick={this.openSignupModal}>註冊成為會員</a>
                                 </li>
                             </ul>
                         </div>
@@ -59,6 +103,7 @@ class LoginBar extends React.Component {
                         <input type="search" name="keyword" placeholder="搜尋"/>
                         <div className="btn">搜尋</div>
                     </div>
+
                 </div>
             </div>
 
