@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal'
 import SignupForm from './SignupForm';
-// import LoginModal from './LoginModal';
+import LoginForm from './LoginForm';
 
 class LoginBar extends React.Component {
     constructor(props) {
@@ -14,6 +14,8 @@ class LoginBar extends React.Component {
         this.toggleMenu = this.toggleMenu.bind(this)
         this.openSignupModal = this.openSignupModal.bind(this)
         this.closeSignupModal = this.closeSignupModal.bind(this)
+        this.openLoginModal = this.openLoginModal.bind(this)
+        this.closeLoginModal = this.closeLoginModal.bind(this)
     }
 
     toggleMenu() {
@@ -81,17 +83,20 @@ class LoginBar extends React.Component {
                             </a>
                         </div>
                     </div>
-                    {/*<LoginModal show={this.state.openLoginModal} onHide={this.closeLoginModal}/>*/}
                     <ReactModal isOpen={this.state.openSignupModal} onRequestClose={this.closeSignupModal}
                                 style={style.modal}>
                         <SignupForm close={this.closeSignupModal}/>
                     </ReactModal>
+                    <ReactModal isOpen={this.state.openLoginModal} onRequestClose={this.closeLoginModal}
+                                style={style.modal}>
+                        <LoginForm close={this.closeLoginModal}/>
+                    </ReactModal>
                     <div className="menu__top__member menu__top_popup" style={style.menuPopup}>
                         <div className="menu__top__member_beforelogin">
                             <ul>
-                                {/*<li><a className="btn alreadymember" href="" onClick={this.openLoginModal}>登入</a>*/}
-                                {/*</li>*/}
-                                <li><a className="btn notyetmember" onClick={this.openSignupModal}>註冊成為會員</a>
+                                <li><a className="btn alreadymember" href="#!" onClick={this.openLoginModal}>登入</a>
+                                </li>
+                                <li><a className="btn notyetmember" href="#!" onClick={this.openSignupModal}>註冊成為會員</a>
                                 </li>
                             </ul>
                         </div>
