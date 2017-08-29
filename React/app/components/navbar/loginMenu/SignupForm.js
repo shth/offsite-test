@@ -38,15 +38,6 @@ class SignupForm extends React.Component {
 
     }
 
-    // handleError(error) {
-    //     let form = this.refs.form;
-    //     Object.keys(error).map(key => {
-    //         const value = error[key]
-    //         this.refs[key].setCustomValidity(value);
-    //     })
-    //     form.checkValidity();
-    // }
-
     validate() {
         let error = {};
         const {email, password, confirmPassword} = this.state;
