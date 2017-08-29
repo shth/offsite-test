@@ -1,6 +1,5 @@
 import React from 'react'
 import Form from 'muicss/lib/react/form'
-import Input from 'muicss/lib/react/input'
 import Button from 'muicss/lib/react/button'
 import {connect} from 'react-redux';
 import Validator from 'Validator'
@@ -96,7 +95,6 @@ class SignupForm extends React.Component {
         return (
             <div>
                 <div>Sign up</div>
-                { this.props.authenticated && <div>you are already logged in</div>}
                 <Form ref="form">
                     <div className="mui-textfield">
                         <input type="text" placeholder="Email" value={email} name="email" onChange={this.handleChange}

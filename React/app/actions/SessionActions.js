@@ -2,7 +2,6 @@ import * as types from './types'
 
 export function registerUser(user) {
     return function (dispatch) {
-        alert('signing up');
         return (new Promise((resolve, reject) => {
             setTimeout(() => resolve(), 500);
         })).then(() => {
@@ -22,8 +21,6 @@ export function registerUser(user) {
 }
 export function logInUser(credentials) {
     return function (dispatch) {
-        alert('logging in')
-        alert(`credentials: ${JSON.stringify(credentials)}`)
         return (new Promise((resolve, reject) => {
             setTimeout(() => resolve(), 500);
         })).then(() => {
@@ -45,7 +42,6 @@ export function logInUser(credentials) {
 }
 export function logoutUser() {
     return function (dispatch) {
-        alert('logging out')
         return (new Promise((resolve, reject) => {
             setTimeout(() => resolve(), 500);
         })).then(() => {

@@ -79,8 +79,6 @@ class ViewListContainer extends React.Component {
                 {
                     fetched && !fetching
                         ? <div>
-                        <div>Im view list container</div>
-                        <div>status: {this.state.status}</div>
                         <ViewCover viewCover={viewCover}/>
                         <section className="blog_listing large_img">
                             <InfiniteScroll loadMoreFunction={this.fetchMore}>
