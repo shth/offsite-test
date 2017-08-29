@@ -20,13 +20,9 @@ class ViewListContainer extends React.Component {
                 resolve();
             }, 1000)
         })).then(() => {
-            /* TODO: add editor pick field randomly */
-            /* TODO: add initial sort to place editor picked view at top */
-            const status = (Math.floor(Math.random() * 2));
             const [viewCover, ...views] = viewList;
 
             return {
-                status,
                 viewCover,
                 views,
             }
@@ -59,9 +55,8 @@ class ViewListContainer extends React.Component {
         this.setState({fetching: true});
         this.mockAPI()
             .then(response => {
-                const {status, viewCover, views} = response;
+                const {viewCover, views} = response;
                 this.setState({
-                    status,
                     viewCover,
                     views,
                     fetching: false,

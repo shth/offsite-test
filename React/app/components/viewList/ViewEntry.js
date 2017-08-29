@@ -11,7 +11,6 @@ class ViewEntry extends React.Component {
                 <a href={viewEntry.targetLink}>
                     <div className="blog_listing__item__img ">
                         <img src={`/images/${viewEntry.image}`}/>
-                        { viewEntry.editorPick ? <div className="editor_pick">精選</div> : ''}
                     </div>
                     <div className="blog_listing__item__content">
                         <div className="blog_listing__item__content__tag">
