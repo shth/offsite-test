@@ -2,8 +2,10 @@ import React from 'react'
 import Form from 'muicss/lib/react/form'
 import Input from 'muicss/lib/react/input'
 import Button from 'muicss/lib/react/button'
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import Validator from 'Validator'
+import isEmpty from 'lodash/isEmpty'
+
 import {registerUser} from '../../../actions/SessionActions';
 
 class SignupForm extends React.Component {
@@ -13,6 +15,7 @@ class SignupForm extends React.Component {
             email: '',
             password: '',
             confirmPassword: '',
+            error: {}
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,7 +27,58 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        /* TODO: implement submit function */
+        let error = this.validate();
+        if (isEmpty(error)) {
+            this.submit();
+        }
+        else {
+            // this.handleError(error)
+            this.setState({error});
+        }
+
+    }
+
+    // handleError(error) {
+    //     let form = this.refs.form;
+    //     Object.keys(error).map(key => {
+    //         const value = error[key]
+    //         this.refs[key].setCustomValidity(value);
+    //     })
+    //     form.checkValidity();
+    // }
+
+    validate() {
+        let error = {};
+        const {email, password, confirmPassword} = this.state;
+        if (!Validator.isEmail(email)) {
+            error.email = "Invalid Email"
+        }
+        if (!Validator.isAlphanumeric(password) ) {
+            error.password = "Password must not contain special characters"
+        }
+        if (Validator.isAlpha(password) || Validator.isNumeric(password)) {
+            error.password = "Password must contain at least 1 letter and 1 number"
+        }
+        if (!Validator.isLength(password, {min: 6, max: 12})) {
+            error.password = "Password must be between 6-12 characters"
+        }
+        if (!Validator.equals(password, confirmPassword)) {
+            error.confirmPassword = "Passwords are not equal"
+        }
+        if (Validator.isEmpty(email)) {
+            error.email = "This field is required."
+        }
+        if (Validator.isEmpty(password)) {
+            error.password = "This field is required."
+        }
+        if (Validator.isEmpty(confirmPassword)) {
+            error.confirmPassword = "This field is required."
+        }
+
+        return error;
+    }
+
+    submit() {
         this.props.registerUser(this.state)
             .then(() => {
                 this.props.close();
@@ -33,16 +87,44 @@ class SignupForm extends React.Component {
 
     render() {
         const {email, password, confirmPassword} = this.state
+        const style = {
+            hasError: {
+                borderColor: "#F44336",
+                borderWidth: 2,
+                height: 33,
+                marginBottom: -1
+            },
+            errorMessage: {
+                color: '#F44336'
+                , marginTop: 2
+            }
+        }
         return (
             <div>
                 <div>Sign up</div>
                 { this.props.authenticated && <div>you are already logged in</div>}
-                <Form>
-                    <Input hint="Email" value={email} name="email" onChange={this.handleChange}/>
-                    <Input hint="Password" type="password" value={password} name="password"
-                           onChange={this.handleChange}/>
-                    <Input hint="Confirm Password" type="password" value={confirmPassword} name="confirmPassword"
-                           onChange={this.handleChange}/>
+                <Form ref="form">
+                    <div className="mui-textfield">
+                        <input type="text" placeholder="Email" value={email} name="email" onChange={this.handleChange}
+                               style={Object.assign({}, this.state.error.email && style.hasError)} ref="email"/>
+                        {this.state.error.email &&
+                        <p className="mui--text-caption" style={style.errorMessage}>{this.state.error.email}</p>}
+                    </div>
+                    <div className="mui-textfield">
+                        <input type="password" placeholder="Password" value={password} name="password"
+                               onChange={this.handleChange}
+                               style={Object.assign({}, this.state.error.password && style.hasError)} ref="password"/>
+                        {this.state.error.password &&
+                        <p className="mui--text-caption" style={style.errorMessage}>{this.state.error.password}</p>}
+                    </div>
+                    <div className="mui-textfield">
+                        <input type="password" placeholder="Confirm Password" value={confirmPassword}
+                               name="confirmPassword" onChange={this.handleChange}
+                               style={Object.assign({}, this.state.error.confirmPassword && style.hasError)}
+                               ref="confirmPassword"/>
+                        {this.state.error.confirmPassword &&
+                        <p className="mui--text-caption" style={style.errorMessage}>{this.state.error.confirmPassword}</p>}
+                    </div>
                     <Button onClick={this.handleSubmit}>Submit</Button>
                     <Button onClick={(e) => {
                         e.preventDefault();
