@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactModal from 'react-modal'
-import {createStore, applyMiddleware, compose} from 'redux'
-import {Provider, connect} from 'react-redux'
-import thunk from 'redux-thunk'
-import reducers from '../../../reducers/index';
+import {connect} from 'react-redux'
+
+import {logoutUser} from '../../../actions/SessionActions';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 
@@ -103,7 +102,7 @@ class LoginBar extends React.Component {
                                         <img src="/images/avatar.png" style={{width: 100}}/>
                                         <p>{this.props.user.email}</p>
                                     </div>
-                                    <button>Logout</button>
+                                    <button onClick={this.props.logoutUser}>Logout</button>
                                 </div>
                                 : <ul>
                                     <li><a className="btn alreadymember" href="#!"
@@ -134,4 +133,4 @@ function mapStateToProps(state) {
         authenticated: state.auth.authenticated
     }
 }
-export default connect(mapStateToProps, {})(LoginBar)
+export default connect(mapStateToProps, {logoutUser})(LoginBar)

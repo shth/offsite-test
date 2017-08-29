@@ -43,3 +43,15 @@ export function logInUser(credentials) {
         })
     };
 }
+export function logoutUser() {
+    return function (dispatch) {
+        alert('logging out')
+        return (new Promise((resolve, reject) => {
+            setTimeout(() => resolve(), 500);
+        })).then(() => {
+            dispatch({
+                type: types.UNAUTH_USER,
+            });
+        })
+    };
+}
