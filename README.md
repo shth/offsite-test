@@ -1,3 +1,6 @@
+1. Cloning the project for the first time:  
+`npm install`  
+
 1. To run this project:  
 `npm start`
 
