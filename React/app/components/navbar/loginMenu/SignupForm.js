@@ -31,7 +31,6 @@ class SignupForm extends React.Component {
             this.submit();
         }
         else {
-            // this.handleError(error)
             this.setState({error});
         }
 
@@ -95,25 +94,24 @@ class SignupForm extends React.Component {
         return (
             <div>
                 <div>Sign up</div>
-                <Form ref="form">
+                <Form>
                     <div className="mui-textfield">
                         <input type="text" placeholder="Email" value={email} name="email" onChange={this.handleChange}
-                               style={Object.assign({}, this.state.error.email && style.hasError)} ref="email"/>
+                               style={Object.assign({}, this.state.error.email && style.hasError)}/>
                         {this.state.error.email &&
                         <p className="mui--text-caption" style={style.errorMessage}>{this.state.error.email}</p>}
                     </div>
                     <div className="mui-textfield">
                         <input type="password" placeholder="Password" value={password} name="password"
                                onChange={this.handleChange}
-                               style={Object.assign({}, this.state.error.password && style.hasError)} ref="password"/>
+                               style={Object.assign({}, this.state.error.password && style.hasError)}/>
                         {this.state.error.password &&
                         <p className="mui--text-caption" style={style.errorMessage}>{this.state.error.password}</p>}
                     </div>
                     <div className="mui-textfield">
                         <input type="password" placeholder="Confirm Password" value={confirmPassword}
                                name="confirmPassword" onChange={this.handleChange}
-                               style={Object.assign({}, this.state.error.confirmPassword && style.hasError)}
-                               ref="confirmPassword"/>
+                               style={Object.assign({}, this.state.error.confirmPassword && style.hasError)}/>
                         {this.state.error.confirmPassword &&
                         <p className="mui--text-caption" style={style.errorMessage}>{this.state.error.confirmPassword}</p>}
                     </div>

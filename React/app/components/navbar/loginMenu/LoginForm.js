@@ -83,14 +83,14 @@ class LoginModal extends React.Component {
                 <Form>
                     <div className="mui-textfield">
                         <input type="text" placeholder="Email" value={email} name="email" onChange={this.handleChange}
-                               style={Object.assign({}, this.state.error.email && style.hasError)} ref="email"/>
+                               style={Object.assign({}, this.state.error.email && style.hasError)}/>
                         {this.state.error.email &&
                         <p className="mui--text-caption" style={style.errorMessage}>{this.state.error.email}</p>}
                     </div>
                     <div className="mui-textfield">
                         <input type="password" placeholder="Password" value={password} name="password"
                                onChange={this.handleChange}
-                               style={Object.assign({}, this.state.error.password && style.hasError)} ref="password"/>
+                               style={Object.assign({}, this.state.error.password && style.hasError)}/>
                         {this.state.error.password &&
                         <p className="mui--text-caption" style={style.errorMessage}>{this.state.error.password}</p>}
                     </div>
