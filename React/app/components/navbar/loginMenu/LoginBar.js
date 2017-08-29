@@ -81,7 +81,7 @@ class LoginBar extends React.Component {
                             </a>
                             <a id="popup_member" onClick={this.toggleMenu}>
                                 <div className="member_btn">
-                                    <span></span>{this.props.authenticated ? '你好' : '會員登入'}
+                                    <span><img src="/images/avatar-sm.png" style={{width: 20, marginTop: 4}}/></span>{this.props.authenticated ? '你好' : '會員登入'}
                                 </div>
                             </a>
                         </div>
