@@ -23,16 +23,14 @@ class InfiniteScroll extends React.Component {
             return ((elemBottom <= docViewBottom));
         };
 
-        (() => {
-            $window.scroll((e) => {
-                clearTimeout(timer);
-                if (this.state.fetching || !isScrolledIntoView(this.rootElem)) return;
+        $window.scroll((e) => {
+            clearTimeout(timer);
+            if (this.state.fetching || !isScrolledIntoView(this.rootElem)) return;
 
-                timer = setTimeout(() =>{
-                    this.fetchMore();
-                }, 50);
-            })
-        })()
+            timer = setTimeout(() => {
+                this.fetchMore();
+            }, 50);
+        })
     }
 
     fetchMore() {
@@ -44,7 +42,6 @@ class InfiniteScroll extends React.Component {
     }
 
     render() {
-        const {InfiniteScroll} = this.props;
         const {fetching} = this.state;
         return (
             <section ref={elem => this.rootElem = elem}>
@@ -55,6 +52,4 @@ class InfiniteScroll extends React.Component {
     }
 }
 
-export
-default
-InfiniteScroll
+export default InfiniteScroll

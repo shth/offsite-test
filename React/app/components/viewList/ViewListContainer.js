@@ -47,7 +47,6 @@ class ViewListContainer extends React.Component {
     }
 
     fetchMore() {
-        this;
         return this.mockLoadMore()
             .then(response=>{
                 this.setState({
