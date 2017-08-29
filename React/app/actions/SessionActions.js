@@ -2,10 +2,12 @@ import * as types from './types'
 
 export function registerUser(user) {
     return function (dispatch) {
-        alert('signing up')
+        alert('signing up');
         return (new Promise((resolve, reject) => {
             setTimeout(() => resolve(), 500);
         })).then(() => {
+            /* mocking server side validation */
+            if(localStorage.getItem(user.email)) throw {email: 'this email is already taken.'};
             localStorage.setItem(user.email, user.password);
             dispatch({
                     type: types.AUTH_USER,

@@ -73,6 +73,9 @@ class SignupForm extends React.Component {
         this.props.registerUser(this.state)
             .then(() => {
                 this.props.close();
+            })
+            .catch(error => {
+                this.setState({error});
             });
     }
 
