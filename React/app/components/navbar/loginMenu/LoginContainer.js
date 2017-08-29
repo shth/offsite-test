@@ -7,8 +7,7 @@ import LoginBar from './LoginBar'
 class LoginContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-        }
+        this.state = {}
     }
 
     render() {
