@@ -79,11 +79,11 @@ class Navbar extends React.Component {
 
 const menuItems = [
 
-    {target: "https://www.hk01.com/index.html", text: "主頁"},
+    {target: "https://www.hk01.com/", text: "主頁"},
 
     {target: "https://www.hk01.com/channel/%E6%96%B0%E8%81%9E", text: "新聞"},
 
-    {target: "http://2017hkceelection.hk01.com/index.html", text: "特首選舉2017"},
+    {target: "http://2017hkceelection.hk01.com/", text: "特首選舉2017"},
 
     {target: "https://www.hk01.com/section/01%E8%A7%80%E9%BB%9E", text: "01觀點"},
 
@@ -119,11 +119,11 @@ const menuItems = [
 
 const submenuItems = [
 
-    {target: "http://www.hk01.com/index.html", text: "主頁"},
+    {target: "http://www.hk01.com/", text: "主頁"},
     {target: "http://www.hk01.com/module/hotnews", text: "熱門文章"},
     {target: "http://www.hk01.com/module/latestnews", text: "最新文章"},
     {target: "https://www.hk01.com/channel/%E6%96%B0%E8%81%9E", text: "新聞"},
-    {target: "http://2017hkceelection.hk01.com/index.html", text: "特首選舉"},
+    {target: "http://2017hkceelection.hk01.com/", text: "特首選舉"},
     {target: "https://www.hk01.com/section/%E6%B8%AF%E8%81%9E", text: "港聞"},
     {target: "https://www.hk01.com/section/%E5%85%A9%E5%B2%B8", text: "兩岸"},
     {target: "https://www.hk01.com/section/%E7%B6%93%E6%BF%9F", text: "經濟"},
@@ -144,7 +144,7 @@ const submenuItems = [
     {target: "https://www.hk01.com/section/%E8%B7%91%E6%AD%A5", text: "跑步"},
     {target: "https://www.hk01.com/channel/%E7%86%B1%E8%A9%B1", text: "熱話"},
     {target: "https://www.hk01.com/channel/%E7%A7%91%E6%8A%80%E7%8E%A9%E7%89%A9", text: "科技玩物"},
-    {target: "http://philosophy.hk01.com/index.html", text: "01哲學"},
+    {target: "http://philosophy.hk01.com", text: "01哲學"},
     {target: "https://www.hk01.com/section/01%E8%A7%80%E9%BB%9E", text: "01觀點"},
     {target: "https://www.hk01.com/blogger/01%E5%8D%9A%E8%A9%95", text: "01博評"},
     {target: "http://www.hk01.com/bloggers", text: "博評作者"},
@@ -152,7 +152,7 @@ const submenuItems = [
     {target: "https://www.hk01.com/photostory", text: "01影像"},
     {target: "http://www.hk01.com/tag/9972", text: "01 Video"},
     {target: "https://www.hk01.com/section/01%E6%B4%BB%E5%8B%95", text: "01活動"},
-    {target: "http://space.hk01.com/index.html", text: "01空間"},
+    {target: "http://space.hk01.com/", text: "01空間"},
     {target: "https://www.hk01.com/channel/%E6%9C%83%E5%93%A1%E5%B0%88%E5%8D%80", text: "會員專區"},
     {target: "https://www.hk01.com/issue", text: "01議題"},
 
