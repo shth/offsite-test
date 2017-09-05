@@ -13,7 +13,9 @@ export default function (state = INITIAL_STATE, action) {
         case UNAUTH_USER:
             return Object.assign({}, state, {authenticated: false});
         case REHYDRATE:
-            const {auth: {user, authenticated}} = action.payload
+            const {auth} = action.payload;
+            if(!auth) return state;
+            const {user, authenticated} = auth;
             return Object.assign({}, state, {user, authenticated});
     }
 
